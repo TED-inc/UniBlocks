@@ -26,7 +26,7 @@ namespace TEDinc.UniBlocks
             if (!data.ContainsKey(chunkIndex))
             {
                 ChunckData chunk = new ChunckData();
-                chunk.RandomFill();
+                chunk.TestFill();
                 data.Add(chunkIndex, chunk);
             }
 

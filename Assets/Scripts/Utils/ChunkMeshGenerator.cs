@@ -6,22 +6,6 @@ namespace TEDinc.UniBlocks
 {
     public static class ChunkMeshGenerator
     {
-        private static List<int> triangles;
-        private static List<Vector2> uv;
-        private static Mesh mesh;
-
-
-        static readonly int verticesInRow;
-        static readonly int verticesInFlat;
-        static readonly int verticesInVolume;
-
-        static ChunkMeshGenerator()
-        {
-            verticesInRow = ChunckData.chunkSize + 1;
-            verticesInFlat = MathExt.Pow(verticesInRow, 2);
-            verticesInVolume = MathExt.Pow(verticesInRow, 3);
-        }
-
 
 
         public static Mesh GenerateMesh(Vector3Int chunkIndex)
@@ -88,11 +72,14 @@ namespace TEDinc.UniBlocks
 
                         void SetUVandNormals()
                         {
+                            uv.Add(Vector2.zero);
+                            uv.Add(Vector2.up);
+                            uv.Add(Vector2.right);
+                            uv.Add(Vector2.one);
+
+
                             for (int i = 0; i < 4; i++)
-                            {
-                                uv.Add(Vector2.zero);
                                 normals.Add(DrawSidesUtils.GetNormal(drawSide));
-                            }
                         }
 
                         void SetTriangles()
@@ -124,10 +111,10 @@ namespace TEDinc.UniBlocks
                                     vericies.Add(position + new Vector3(0, 1, 0));
                                     break;
                                 case DrawSides.Up:
-                                    vericies.Add(position + new Vector3(0, 1, 0));
                                     vericies.Add(position + new Vector3(0, 1, 1));
-                                    vericies.Add(position + new Vector3(1, 1, 0));
                                     vericies.Add(position + new Vector3(1, 1, 1));
+                                    vericies.Add(position + new Vector3(0, 1, 0));
+                                    vericies.Add(position + new Vector3(1, 1, 0));
                                     break;
                                 case DrawSides.Down:
                                     vericies.Add(position + new Vector3(0, 0, 0));
@@ -136,10 +123,10 @@ namespace TEDinc.UniBlocks
                                     vericies.Add(position + new Vector3(1, 0, 1));
                                     break;
                                 case DrawSides.Front:
-                                    vericies.Add(position + new Vector3(0, 0, 1));
                                     vericies.Add(position + new Vector3(1, 0, 1));
-                                    vericies.Add(position + new Vector3(0, 1, 1));
                                     vericies.Add(position + new Vector3(1, 1, 1));
+                                    vericies.Add(position + new Vector3(0, 0, 1));
+                                    vericies.Add(position + new Vector3(0, 1, 1));
                                     break;
                                 case DrawSides.Back:
                                     vericies.Add(position + new Vector3(0, 0, 0));

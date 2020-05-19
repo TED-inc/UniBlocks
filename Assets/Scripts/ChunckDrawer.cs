@@ -11,6 +11,7 @@ namespace TEDinc.UniBlocks
         private MeshCollider collider;
         
 
+        [ContextMenu("Test")]
         private void Start()
         {
             //test
@@ -24,20 +25,5 @@ namespace TEDinc.UniBlocks
             filter.mesh = mesh;
             collider.sharedMesh = mesh;
         }
-
-        //private void OnDrawGizmos()
-        //{
-        //    Gizmos.color = Color.gray;
-        //
-        //    for (int x = -1; x <= CubeChunckData.chunkSize; x++)
-        //        for (int z = -1; z <= CubeChunckData.chunkSize; z++)
-        //            for (int y = -1; y <= CubeChunckData.chunkSize; y++)
-        //                if ((x == -1 || x == CubeChunckData.chunkSize) ||
-        //                    (y == -1 || y == CubeChunckData.chunkSize) ||
-        //                    (z == -1 || z == CubeChunckData.chunkSize))
-        //                    if (WorldChunksData.GetBlock(chunkIndex, new Vector3Int(x, y, z)) is SimpleBlockBase)
-        //                        Gizmos.DrawCube(new Vector3Int(x, y, z) + Vector3.one / 2f, Vector3.one * .9f);
-        //}
-
     }
 }

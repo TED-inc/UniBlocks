@@ -8,13 +8,13 @@ namespace TEDinc.UniBlocks
         public const int chunkSize = 16;
         public IBlock[,,] data { get; private set; }
 
-        public void RandomFill()
+        public void TestFill()
         {
             data = new IBlock[chunkSize, chunkSize, chunkSize];
 
-            for (int i = 0; i < MathExt.Pow(chunkSize, 3); i++)
+            for (int i = 0; i < MathExt.Pow(chunkSize - 2, 3); i++)
             {
-                data[Random.Range(0, chunkSize), Random.Range(0, chunkSize), Random.Range(0, chunkSize)] = new StoneBlock();
+                data[Random.Range(1, chunkSize - 1), Random.Range(1, chunkSize - 1), Random.Range(1, chunkSize - 1)] = new StoneBlock();
             }
         }
 
