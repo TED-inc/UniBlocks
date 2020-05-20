@@ -7,6 +7,11 @@ namespace TEDinc.UniBlocks
     {
         private static Dictionary<Vector3Int, ChunckData> data;
 
+        public static IBlock GetBlock(Vector3Int worldPosition)
+        {
+            return GetBlock(Vector3Int.zero, worldPosition);
+        }
+
         public static IBlock GetBlock(Vector3Int chunkIndex, Vector3Int position)
         {
             Vector3Int outbound = position - new Vector3Int(
@@ -31,6 +36,11 @@ namespace TEDinc.UniBlocks
             }
 
             return data[chunkIndex];
+        }
+
+        public static void ClearChunks()
+        {
+            data = null;
         }
     }
 }
