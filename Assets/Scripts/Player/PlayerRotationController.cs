@@ -2,20 +2,23 @@
 
 namespace TEDinc.UniBlocks
 {
+    [RequireComponent(typeof(PlayerBodyController))]
     public class PlayerRotationController : MonoBehaviour
     {
-        [SerializeField]
-        private Transform head;
-        [SerializeField]
-        private Transform body;
+        private PlayerBodyController playerBodyController;
 
         private const float horizontalRotationCoefficient = 0.3f;
         private const float verticalRotationClampMax = 89f;
 
+        private void Start()
+        {
+            playerBodyController = GetComponent<PlayerBodyController>();
+        }
+
         private void Update()
         {
-            body.localRotation = Quaternion.Euler(0f, Input.mousePosition.x * horizontalRotationCoefficient, 0f);
-            head.localRotation = Quaternion.Euler(
+            playerBodyController.GetBody().localRotation = Quaternion.Euler(0f, Input.mousePosition.x * horizontalRotationCoefficient, 0f);
+            playerBodyController.GetHead().localRotation = Quaternion.Euler(
                 Mathf.Lerp(
                     verticalRotationClampMax,
                     -verticalRotationClampMax,
