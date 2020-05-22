@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace TEDinc.UniBlocks
 {
@@ -20,6 +21,19 @@ namespace TEDinc.UniBlocks
                 a.x * b.x,
                 a.y * b.y,
                 a.z * b.z);
+        }
+
+        public static Vector3Int DivideToFloor(this Vector3 v, int round)
+        {
+            return new Vector3Int(
+                (int)Math.Floor(v.x / round),
+                (int)Math.Floor(v.y / round),
+                (int)Math.Floor(v.z / round));
+        }
+
+        public static Vector3Int FloorTo(this Vector3 v, int round)
+        {
+            return v.DivideToFloor(round) * round;
         }
     }
 }

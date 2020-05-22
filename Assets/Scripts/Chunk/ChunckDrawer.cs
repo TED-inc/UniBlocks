@@ -12,8 +12,12 @@ namespace TEDinc.UniBlocks
         private MeshCollider collider;
         
 
-        [ContextMenu("Draw")]
-        private void Draw()
+        public void Setup(Vector3Int chunkIndex)
+        {
+            this.chunkIndex = chunkIndex;
+        }
+
+        public void Draw()
         {
             renderer = GetComponent<MeshRenderer>();
             filter = GetComponent<MeshFilter>();
