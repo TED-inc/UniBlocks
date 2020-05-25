@@ -5,7 +5,8 @@ namespace TEDinc.UniBlocks
 {
     public class ChunksLoaderDynamic : ChunksLoaderBase
     {
-        public const int chunksDrawDistance = 5;
+        [SerializeField]
+        private int chunksDrawDistance = 3;
 
         private Vector3Int prevFloorPosition;
 

@@ -6,9 +6,10 @@ namespace TEDinc.UniBlocks
     {
         [SerializeField]
         private LineRenderer lineRenderer;
+        [SerializeField]
+        private WorldChunksDrawer worldDrawer;
 
         private const float hitDistance = 5f;
-        RaycastHit hit;
 
         private void Start()
         {
@@ -32,10 +33,18 @@ namespace TEDinc.UniBlocks
             void SelectLookAtBlock()
             {
                 Ray ray = Camera.main.ScreenPointToRay(Camera.main.pixelRect.size / 2f);
- 
+                RaycastHit hit;
+
                 if (Physics.Raycast(ray, out hit, hitDistance));
                     if (hit.collider is MeshCollider)
+                    {
                         DrawSelector();
+
+                        if (Input.GetMouseButtonUp(0))
+                            RemoveBlock();
+                        else if (Input.GetMouseButtonUp(1))
+                            AddBlock();
+                    }
 
                 void DrawSelector()
                 {
@@ -71,14 +80,20 @@ namespace TEDinc.UniBlocks
                         return hitMesh.triangles[(hit.triangleIndex) * 3 + subIndex];
                     }
                 }
+
+                void AddBlock()
+                {
+                    Vector3Int pos = (hit.point + hit.normal * 0.1f).FloorTo(1);
+                    worldDrawer.SetBlock(pos, new StoneBlock());
+                }
+
+                void RemoveBlock()
+                {
+                    Vector3Int pos = (hit.point - hit.normal * 0.1f).FloorTo(1);
+                    worldDrawer.SetBlock(pos, null);
+                }
+
             }
-        }
-
-        private void OnDrawGizmos()
-        {
-            
-
-            
         }
     }
 }

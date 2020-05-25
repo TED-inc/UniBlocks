@@ -23,6 +23,11 @@ namespace TEDinc.UniBlocks
             return data[position.x, position.y, position.z];
         }
 
+        public void SetBlock(Vector3Int position, IBlock block)
+        {
+            data[position.x, position.y, position.z] = block;
+        }
+
 
         //public static void WriteString()
         //{
