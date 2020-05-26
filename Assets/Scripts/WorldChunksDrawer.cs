@@ -74,6 +74,7 @@ namespace TEDinc.UniBlocks
                 if (chunks.ContainsKey(chunk.Key))
                 {
                     chunks[chunk.Key].Draw();
+                    chunks[chunk.Key].gameObject.SetActive(chunk.Value != ChunkLoadType.dynamicDisabled);
                 }
                 else
                 {
@@ -84,6 +85,7 @@ namespace TEDinc.UniBlocks
                         transform);
                     drawer.name = "drawer " + chunk.Key;
                     drawer.Setup(chunk.Key);
+                    drawer.gameObject.SetActive(chunk.Value != ChunkLoadType.dynamicDisabled);
                     drawQueue.Enqueue(drawer);
                     chunks.Add(chunk.Key, drawer);
                 }

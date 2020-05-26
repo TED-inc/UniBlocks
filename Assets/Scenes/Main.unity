@@ -695,6 +695,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lineRenderer: {fileID: 882775548}
+  worldDrawer: {fileID: 1295322793}
 --- !u!114 &1487518122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -733,6 +734,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7b91f884de06b94f96ef357d4724590, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chunksDrawDistance: 1
 --- !u!1 &1622335238
 GameObject:
   m_ObjectHideFlags: 0
